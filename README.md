@@ -1,139 +1,298 @@
-# Test Summary Report
-## Toko Abunawas Inventory Application
+# Toko Abunawas — Software Quality Assurance Portfolio
 
-### 1. Project Information
+This repository contains my **Software Quality Assurance (SQA) portfolio** for the **Toko Abunawas Inventory Application**. The project demonstrates a structured manual testing process, from test planning and test-case design to test execution, defect reporting, evidence collection, and preparation for retesting and regression testing.
 
-**Project Name:** Toko Abunawas Inventory Application  
-**Testing Role:** Software Quality Assurance / Manual Tester  
-**Testing Method:** Manual Testing  
-**Testing Approach:** Black Box Testing  
-**Test Cycle Status:** Completed with Open Defects  
+> **Current QA Cycle:** Completed with Open Defects  
+> **78 Test Cases Executed | 75 Passed | 3 Failed | 3 Defects Identified**
 
 ---
 
-### 2. Testing Objective
+## System Under Test
 
-Pengujian dilakukan untuk memastikan fungsi utama pada Toko Abunawas Inventory Application berjalan sesuai dengan kebutuhan sistem dan menghasilkan output yang sesuai dengan expected result.
+**Toko Abunawas Inventory Application** is an inventory management application developed using **Flutter** with **Firebase Authentication** and **Cloud Firestore**.
 
-Pengujian mencakup validasi fungsi utama aplikasi, skenario positif dan negatif, validasi input, pengujian batas, pengecekan navigasi, serta penanganan kondisi error pada aplikasi.
+The application includes functionality such as:
 
----
-
-### 3. Testing Scope
-
-Modul yang diuji meliputi:
-
-- Authentication
+- Authentication and role-based access
 - Dashboard
-- Product Management
-- Stock In
-- Stock Out
-- QR / Barcode Scanner
-- Transaction History
+- Product management
+- Stock In and batch management
+- Stock Out with FIFO flow
+- QR code scanning
+- Transaction history
 - Reports
-- User Management
+- User management
 - Alerts
-- Analysis
-- Navigation
+- Stock analysis
+- Application navigation
+
+**Application Source Repository:**  
+[Bayusukmoadji/toko_abunawas_apk](https://github.com/Bayusukmoadji/toko_abunawas_apk)
 
 ---
 
-### 4. Test Execution Summary
+## Testing Objective
+
+The objective of this testing project is to verify that the application's main functions behave according to their expected results and to identify defects that could affect functionality, usability, data integrity, or user experience.
+
+The testing process was performed manually using a black-box approach based on observable application behavior.
+
+---
+
+## Testing Approach
+
+The portfolio includes practical implementation of:
+
+- Manual Testing
+- Black Box Testing
+- Functional Testing
+- Positive Testing
+- Negative Testing
+- Validation Testing
+- Boundary Testing
+- Authorization Testing
+- UI/UX Consistency Testing
+- Stability Testing
+- Defect Reporting
+- Retesting Planning
+- Focused Regression Testing Planning
+
+---
+
+## Test Scope
+
+Testing covered **12 application modules**:
+
+| No. | Module | Test Cases |
+|---:|---|---:|
+| 1 | Authentication | 10 |
+| 2 | Dashboard | 5 |
+| 3 | Product Management | 10 |
+| 4 | Stock In | 9 |
+| 5 | Stock Out | 10 |
+| 6 | Scanner | 5 |
+| 7 | Transaction History | 5 |
+| 8 | Reports | 5 |
+| 9 | User Management | 7 |
+| 10 | Alerts | 3 |
+| 11 | Analysis | 4 |
+| 12 | Navigation | 5 |
+|  | **Total** | **78** |
+
+---
+
+## Test Execution Result
 
 | Metric | Result |
 |---|---:|
-| Total Test Cases | 78 |
-| Executed | 78 |
-| Passed | 75 |
-| Failed | 3 |
-| Blocked | 0 |
-| Not Executed | 0 |
-| Execution Progress | 100% |
-| Pass Rate | 96.15% |
+| Total Test Cases | **78** |
+| Executed | **78** |
+| Passed | **75** |
+| Failed | **3** |
+| Blocked | **0** |
+| Not Executed | **0** |
+| Execution Progress | **100%** |
+| Pass Rate | **96.15%** |
+
+### Final Test Cycle Status
+
+**COMPLETED WITH OPEN DEFECTS**
+
+The purpose of this portfolio is not to present a system with zero defects, but to demonstrate a realistic QA workflow in which failures are identified, documented, traced to test cases, and prepared for retesting after a fix becomes available.
 
 ---
 
-### 5. Defect Summary
+## Defects Identified
 
-Selama proses pengujian ditemukan 3 defect yang masih berstatus Open.
+Three defects were identified during manual testing:
 
-| Bug ID | Related Test Case | Module | Summary | Severity | Priority | Status |
+| Bug ID | Related Test Case | Area | Finding | Severity | Priority | Status |
 |---|---|---|---|---|---|---|
-| BUG-001 | TC-SCAN-003 | Scanner / Stock Out | Unknown QR code menampilkan raw Cloud Firestore assertion error | High | High | Open |
-| BUG-002 | TC-NAV-002 | History / Navigation | Back arrow pada halaman Transaction History tidak konsisten dengan halaman lain | Low | Medium | Open |
-| BUG-003 | TC-NAV-005 | Stock In / Network Handling | Network interruption menampilkan raw Cloud Firestore unavailable error kepada user | Medium | High | Open |
+| **BUG-001** | TC-SCAN-003 | Scanner / Stock Out | Unknown QR code exposes a raw Cloud Firestore assertion error instead of a user-friendly validation message | High | High | Open |
+| **BUG-002** | TC-NAV-002 | History / Navigation | Back arrow on Transaction History is visually inconsistent with comparable pages | Low | Medium | Open |
+| **BUG-003** | TC-NAV-005 | Stock In / Network Handling | Network interruption exposes a raw Cloud Firestore unavailable error instead of controlled connectivity feedback | Medium | High | Open |
+
+Detailed reproduction steps, expected results, actual results, severity, priority, evidence references, impact, and recommendations are available in the **Bug Report**.
 
 ---
 
-### 6. Key Findings
+## Retesting & Regression Testing
 
-#### BUG-001 — Unknown QR Handling
-Ketika QR code yang tidak dikenal atau tidak terdaftar dipindai, aplikasi menampilkan raw Cloud Firestore assertion error kepada user. Sistem seharusnya menampilkan pesan validasi yang lebih ramah dan tidak mengekspos error internal.
+The three identified defects are currently **Open**.
 
-#### BUG-002 — Navigation UI Consistency
-Back arrow pada halaman Transaction History memiliki tampilan yang berbeda dibandingkan halaman lain yang sejenis. Fungsi navigasi tetap tersedia, tetapi konsistensi UI perlu diperbaiki.
+Therefore:
 
-#### BUG-003 — Network Error Handling
-Ketika koneksi jaringan atau layanan Firestore tidak tersedia pada proses Stock In, aplikasi menampilkan raw Cloud Firestore error. Sistem seharusnya menampilkan pesan koneksi yang lebih mudah dipahami serta memberikan kemungkinan retry setelah koneksi kembali tersedia.
+- **Retesting Status:** Not Executed
+- **Regression Testing Status:** Not Executed
 
----
+Retest and focused regression scenarios have already been prepared and will be executed after fixes become available.
 
-### 7. Retesting and Regression Testing Status
+Planned QA flow:
 
-Retesting dan regression testing belum dieksekusi karena ketiga defect masih berstatus Open dan belum tersedia perbaikan dari sisi development.
+**Defect Found → Bug Report → Developer Fix → Retest → Focused Regression Testing → Defect Closure**
 
-Dokumen retesting dan regression testing telah disiapkan untuk digunakan setelah defect diperbaiki.
-
-Alur berikutnya:
-
-1. Developer melakukan perbaikan terhadap BUG-001, BUG-002, dan BUG-003.
-2. QA melakukan retesting terhadap test case yang sebelumnya gagal.
-3. Jika retesting berhasil, QA menjalankan focused regression testing pada fitur terkait.
-4. Defect dapat ditutup apabila hasil retesting dan regression testing sesuai expected result.
-
-**Current Retest Status:** Not Executed  
-**Current Regression Testing Status:** Not Executed  
+This separation is intentional: a failed test is not marked as passed until the related defect has actually been fixed and verified.
 
 ---
 
-### 8. Testing Evidence
+## Repository Structure
 
-Screenshot evidence disimpan pada direktori:
-
-`06-Evidence/`
-
-Evidence diberi nama berdasarkan Test Case ID agar memiliki traceability dengan dokumen Test Cases dan Bug Report.
-
-Evidence utama untuk defect:
-
-- `06-Evidence/Scanner/TC-SCAN-003.png`
-- `06-Evidence/Navigation/TC-NAV-002.png`
-- `06-Evidence/Navigation/TC-NAV-005.png`
+```text
+Toko-Abunawas-SQA-Portfolio/
+│
+├── 01-Test-Plan/
+│   └── Test_Plan.md
+│
+├── 02-Test-Scenarios/
+│   └── Test_Scenarios.xlsx
+│
+├── 03-Test-Cases/
+│   └── Test_Cases.xlsx
+│
+├── 04-Bug-Reports/
+│   └── Bug_Report.xlsx
+│
+├── 05-Regression-Testing/
+│   └── Regression_Testing.xlsx
+│
+├── 06-Evidence/
+│   ├── Authentication/
+│   ├── Dashboard/
+│   ├── Product-Management/
+│   ├── Stock-In/
+│   ├── Stock-Out/
+│   ├── Scanner/
+│   ├── History/
+│   ├── Reports/
+│   ├── User-Management/
+│   ├── Alerts/
+│   ├── Analysis/
+│   └── Navigation/
+│
+├── 07-Test-Summary/
+│   └── Test_Summary_Report.md
+│
+└── README.md
+```
 
 ---
 
-### 9. Test Deliverables
+## QA Documentation
 
-Dokumentasi QA yang telah disiapkan:
-
-- Test Plan
-- Test Scenarios
-- Test Cases
-- Bug Report
-- Testing Evidence
-- Retesting & Regression Testing Plan
-- Test Summary Report
+| Document | Description |
+|---|---|
+| [Test Plan](./01-Test-Plan/Test_Plan.md) | Testing objectives, scope, strategy, environment, criteria, and deliverables |
+| [Test Scenarios](./02-Test-Scenarios/Test_Scenarios.xlsx) | High-level testing scenarios for the application modules |
+| [Test Cases](./03-Test-Cases/Test_Cases.xlsx) | Detailed manual test cases including expected and actual results |
+| [Bug Report](./04-Bug-Reports/Bug_Report.xlsx) | Documentation of defects discovered during test execution |
+| [Regression Testing](./05-Regression-Testing/Regression_Testing.xlsx) | Retest and focused regression scenarios prepared for future fixes |
+| [Testing Evidence](./06-Evidence/) | Screenshot evidence organized by module and Test Case ID |
+| [Test Summary Report](./07-Test-Summary/Test_Summary_Report.md) | Final summary of the current manual testing cycle |
 
 ---
 
-### 10. Final Conclusion
+## Traceability
 
-Berdasarkan hasil manual testing terhadap 78 test case, sebanyak 75 test case menghasilkan status PASS dan 3 test case menghasilkan status FAIL.
+The documentation uses consistent identifiers to make findings traceable across artifacts.
 
-Execution progress mencapai 100% dengan pass rate sebesar 96.15%.
+Example:
 
-Tiga defect berhasil diidentifikasi dan didokumentasikan melalui Bug Report. Ketiga defect masih berstatus Open sehingga retesting dan regression testing belum dijalankan.
+```text
+Test Scenario
+   ↓
+Test Case
+   ↓
+Test Execution Result
+   ↓
+Evidence
+   ↓
+Bug Report (if failed)
+   ↓
+Retest / Regression Plan
+```
 
-Secara umum, fungsi utama aplikasi telah berjalan sesuai expected result pada sebagian besar skenario pengujian. Namun, aplikasi masih membutuhkan perbaikan pada penanganan QR tidak dikenal, konsistensi navigasi pada halaman Transaction History, serta penanganan error saat terjadi gangguan koneksi sebelum defect dapat ditutup.
+Example defect trace:
 
-**Final Test Cycle Status: COMPLETED WITH OPEN DEFECTS**
+```text
+TC-SCAN-003
+   ↓
+FAIL
+   ↓
+06-Evidence/Scanner/TC-SCAN-003.png
+   ↓
+BUG-001
+   ↓
+RT-001 + related regression scenarios
+```
+
+---
+
+## Evidence
+
+Testing evidence is stored in the [`06-Evidence`](./06-Evidence/) directory.
+
+Screenshots are organized by module and named using the corresponding **Test Case ID**.
+
+Key defect evidence:
+
+- [`TC-SCAN-003`](./06-Evidence/Scanner/TC-SCAN-003.png) — BUG-001
+- [`TC-NAV-002`](./06-Evidence/Navigation/TC-NAV-002.png) — BUG-002
+- [`TC-NAV-005`](./06-Evidence/Navigation/TC-NAV-005.png) — BUG-003
+
+---
+
+## Skills Demonstrated
+
+Through this portfolio, I demonstrate practical understanding of:
+
+- Translating application behavior into test scenarios and test cases
+- Designing positive and negative test conditions
+- Comparing expected results with actual application behavior
+- Identifying and documenting reproducible defects
+- Assigning severity and priority based on defect impact
+- Maintaining traceability between test cases, evidence, and defects
+- Testing QR-based inventory flows
+- Testing FIFO-related stock-out behavior
+- Testing role and access behavior
+- Testing network/error-handling conditions
+- Reviewing navigation and UI consistency
+- Preparing retesting and regression testing after defect fixes
+
+---
+
+## Tools & Technologies
+
+**QA Documentation**
+- Microsoft Excel / Spreadsheet
+- Markdown
+- Git & GitHub
+- Screenshot evidence
+
+**System Under Test**
+- Flutter
+- Firebase Authentication
+- Cloud Firestore
+- QR Code / Scanner functionality
+
+---
+
+## Notes
+
+This repository represents an **independent Software Quality Assurance portfolio project** based on an application that I also developed as an academic/final project.
+
+The QA documentation reflects actual manual test execution. Failed cases and open defects are intentionally retained to demonstrate the defect-identification and reporting process rather than presenting artificial 100% test results.
+
+---
+
+## Author
+
+**Bayu Sukmo Adji**  
+Fresh Graduate — Informatics Engineering  
+Aspiring Software Quality Assurance
+
+- GitHub: [Bayusukmoadji](https://github.com/Bayusukmoadji)
+- Application Repository: [toko_abunawas_apk](https://github.com/Bayusukmoadji/toko_abunawas_apk)
+
+---
+
+*Software Quality Assurance Portfolio — Toko Abunawas Inventory Application*
