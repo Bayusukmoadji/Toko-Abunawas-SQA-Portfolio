@@ -186,7 +186,7 @@ Toko-Abunawas-SQA-Portfolio/
 | [Test Cases](./03-Test-Cases/Test_Cases.xlsx) | Detailed manual test cases including expected and actual results |
 | [Bug Report](./04-Bug-Reports/Bug_Report.xlsx) | Documentation of defects discovered during test execution |
 | [Regression Testing](./05-Regression-Testing/Regression_Testing.xlsx) | Retest and focused regression scenarios prepared for future fixes |
-| [Testing Evidence](./06-Evidence/) | Screenshot evidence organized by module and Test Case ID |
+| [Testing Evidence](./06-Evidence/) | Screenshot evidence and observational execution notes organized by module/test case |
 | [Test Summary Report](./07-Test-Summary/Test_Summary_Report.md) | Final summary of the current manual testing cycle |
 
 ---
@@ -195,16 +195,14 @@ Toko-Abunawas-SQA-Portfolio/
 
 The documentation uses consistent identifiers to make findings traceable across artifacts.
 
-Example:
-
 ```text
 Test Scenario
    ↓
 Test Case
    ↓
-Test Execution Result
+Execution Result
    ↓
-Evidence
+Evidence / Execution Notes
    ↓
 Bug Report (if failed)
    ↓
@@ -225,19 +223,37 @@ BUG-001
 RT-001 + related regression scenarios
 ```
 
+For observational test cases, execution may be documented through the **Actual Result** and **Notes** fields rather than a dedicated screenshot when one image would not represent the full test flow.
+
 ---
 
-## Evidence
+## Evidence Strategy
 
 Testing evidence is stored in the [`06-Evidence`](./06-Evidence/) directory.
 
-Screenshots are organized by module and named using the corresponding **Test Case ID**.
+Screenshot evidence is **prioritized for:**
+
+- Failed test cases and confirmed defects
+- Critical or high-risk scenarios
+- Representative functional tests
+- States where a visual result materially helps demonstrate the test outcome
+
+A dedicated screenshot is **not required for every PASS test case**.
+
+Some test cases—especially stability, navigation, and loading-state checks—require observation across multiple screens or repeated flows. In these cases, the result is documented through the **Actual Result** and **Notes** fields in the Test Cases workbook.
+
+For example:
+
+- **TC-NAV-003** — repeated navigation stability testing was performed across representative modules; no dedicated screenshot was captured because the result depended on observing multiple navigation cycles.
+- **TC-NAV-004** — loading-state behavior was observed on representative data-dependent pages; no dedicated screenshot was captured because the verification covered multiple page/loading states.
 
 Key defect evidence:
 
 - [`TC-SCAN-003`](./06-Evidence/Scanner/TC-SCAN-003.png) — BUG-001
 - [`TC-NAV-002`](./06-Evidence/Navigation/TC-NAV-002.png) — BUG-002
 - [`TC-NAV-005`](./06-Evidence/Navigation/TC-NAV-005.png) — BUG-003
+
+This approach keeps evidence focused on findings that are most useful for defect analysis and QA traceability while avoiding unnecessary duplication for observational PASS cases.
 
 ---
 
@@ -256,6 +272,7 @@ Through this portfolio, I demonstrate practical understanding of:
 - Testing role and access behavior
 - Testing network/error-handling conditions
 - Reviewing navigation and UI consistency
+- Documenting observational test execution
 - Preparing retesting and regression testing after defect fixes
 
 ---
@@ -281,6 +298,8 @@ Through this portfolio, I demonstrate practical understanding of:
 This repository represents an **independent Software Quality Assurance portfolio project** based on an application that I also developed as an academic/final project.
 
 The QA documentation reflects actual manual test execution. Failed cases and open defects are intentionally retained to demonstrate the defect-identification and reporting process rather than presenting artificial 100% test results.
+
+Not every successful test case has a dedicated screenshot. For tests where the outcome is better represented by repeated observation across several screens or states, the execution is documented in the Test Cases workbook through the Actual Result and Notes fields.
 
 ---
 
